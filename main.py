@@ -7,14 +7,10 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.width', None)
 
 #-- Konfigurasi SFTP ---
-hostname = 'sftp10.successfactors.com'
-username = '1162981P'
-password = 'ei35Nhqg'
-
-# T1
-# username = '1162981T'
-# password = 'bTT8KKbaX'
-port = 22
+hostname = os.environ["SFTP_HOST"]
+port = int(os.environ.get("SFTP_PORT", 22))
+username = os.environ["SFTP_USERNAME"]
+password = os.environ["SFTP_PASSWORD"]
 
 #-- Buat koneksi SFTP ---
 transport = paramiko.Transport((hostname, port))
